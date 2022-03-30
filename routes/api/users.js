@@ -5,7 +5,9 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
+const auth = require('../../middleware/auth');
 const User = require('../../models/User');
+
 
 // @route POST api/user
 //@desc     Register User
@@ -59,7 +61,6 @@ router.post('/', [
          (err, token) => {
             if (err) throw err;
             res.json({ token });
-            console.log(token);
          });
       // res.send('User Resgisted Sucessfully');
    } catch (err) {
